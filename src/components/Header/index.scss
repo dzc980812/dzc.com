@@ -1,0 +1,66 @@
+@import '../../style/theme/function.scss';
+@import '../../style/theme/mixins.scss';
+
+
+.HeaderContent {
+    width: 100%;
+    height: vm(50);
+    font-size: vm(25);
+    background: linear-gradient(to right, rgba(255, 240, 245, 0.7), rgba(255, 240, 245, 0.9));
+    position: fixed;
+    top: 0;
+    padding: 0 vm(20);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    @include truncateOne();
+
+    div {
+        width: 33.333%;
+        height: 100%;
+        align-items: center;
+    }
+
+    &__Left {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        color: rgba(255, 153, 153, .9);
+        // color: #66ccff;
+
+        img {
+            width: vm(50);
+            height: vm(50);
+            border-radius: 50%;
+        }
+
+        &__title {
+            padding-left: vm(20);
+        }
+    }
+
+    &__Center {
+        display: flex;
+        justify-content: center;
+        width: 100% !important;
+        // color: #FF99CC;
+        color: rgba(223, 190, 221, .8);
+
+        span {
+            color: rgba(212, 182, 216, 1);
+            // color: #CC99CC;
+            padding-top: vm(2.8);
+        }
+    }
+
+    &__Right {
+        display: flex;
+        justify-content: flex-end;
+        color: rgba(255, 153, 204, 0.6);
+
+        span {
+            color: rgba(255, 153, 153, .9);
+            padding-top: vm(2.8);
+        }
+    }
+}

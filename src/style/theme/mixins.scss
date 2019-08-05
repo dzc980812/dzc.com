@@ -1,0 +1,99 @@
+
+
+/* 多行文本超出部分隐藏 */
+@mixin truncate($clamp: 2){
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $clamp;
+    /*! autoprefixer: off */
+    -webkit-box-orient: vertical;
+    /*! autoprefixer: off */
+    @if $clamp != 1 {
+        display: -webkit-box;
+    }
+}
+
+/* 单行文本超出部分隐藏 */
+@mixin truncateOne(){
+    text-overflow:ellipsis;
+    overflow:hidden;
+    white-space:nowrap;
+}
+
+/**
+* 产生flex样式
+* @param $direction flex方向:       row | column | row-reverse | column-reverse
+* @param $justify 主轴方向布局 : flex-start | flex-end | center | space-between | space-around
+* @param $align    交叉轴方向布局:   flex-start | flex-end | center | baseline | stretch
+* @param $wrap     是否换行         no-wrap | wrap | wrap-reverse
+* @param $content  多行间距      flex-start | flex-end | center | space-between | space-around | stretch;
+*/
+
+@mixin flex($direction: row,$justify: flex-start, $align: flex-start, $wrap: nowrap,$content: flex-start){
+    display: flex;
+    flex-direction: $direction;
+    -ms-flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+    -ms-flex-wrap: $wrap;
+    flex-wrap: $wrap;
+    align-content: $content;
+}
+
+/**
+* @param $width: 6px 箭头的宽度
+* @param $color: black 箭头的颜色
+* @param $direction: bottom 箭头的方向 top | right | bottom | left
+* @param $radius: 0px 箭头的边缘弧度 
+*/
+@mixin arrow($color:black,$direction:bottom,$width: 6px,$radius:0px){
+    display: block;
+    position:absolute;
+    border-width: $width;
+    border-style: solid;
+    border-radius: $radius;
+    @if $direction == bottom {
+        border-width: $width+($width*0.6) $width;
+        border-color: $color transparent transparent;
+    } @else if $direction == top {
+        border-width: $width+($width*0.6) $width;
+        border-color: transparent transparent $color;
+    } @else if $direction == right {
+        border-width: $width $width+($width*0.6);
+        border-color: transparent transparent transparent $color;
+    } @else if $direction == left {
+        border-width: $width $width+($width*0.6);
+        border-color: transparent $color transparent transparent;
+    } @else {
+        border-width: $width+($width*0.6) $width;
+        border-color: $color transparent transparent;
+    }
+}
+
+/**
+*生成怪异盒模型
+*/
+@mixin borderBox(){
+    box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    -o-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+}
+
+/* 滚动条样式 */
+@mixin scrollbar(){
+    &::-webkit-scrollbar {
+        width: 5px;
+        background-color: rgba(0,0,0,0);
+        border-radius: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+        width:4px;
+        height:vm(269);
+        border-radius: 5px;
+        background-color: #fff;
+        opacity:0.5;
+    }
+}

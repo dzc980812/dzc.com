@@ -1,0 +1,12 @@
+/* 改变主题色变量 */
+$--color-primary: #3796de !default;
+$--color-primary-light-1: #5fa9e2 !default;
+$--color-danger: #d52626 !default;
+$--color-warning: #e47928 !default;
+$--color-success: #4eb103 !default;
+$--color-info: #8a97b0 !default;
+
+/* 改变 icon 字体路径变量，必需 */
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+@import '~element-ui/packages/theme-chalk/src/index';
